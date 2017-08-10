@@ -13,6 +13,8 @@
 #include <iostream>
 #define PARI_OLD_NAMES
 
+using namespace std;
+
 class Shape {
   public:
     Shape() {
@@ -77,7 +79,6 @@ GEN randomElement(int n){
     GEN ret;
     ret = cgetg(n + 1, t_VEC);
     for(int i=0; i<n; i++){
-        //gel(ret, i+1) = stoi(rand());
         gel(ret, i+1) = lift(gmodulo(stoi(rand()), stoi(300000)));
     }
     return ret;
@@ -86,8 +87,7 @@ GEN randomElement(int n){
 // Coefficient encoding of a single number into a polynomial
 GEN encodeinput(GEN n, GEN t, long long int input){
     if(input>itos(t)){
-        cout<<"[Error] Using the current encoding and t value, this input will give incorrect result due to reduction.";
-        errorhalt = 1;
+        std::cout<<"[Error] Using the current encoding and t value, this input will give incorrect result due to reduction.";
         return stoi(0);
     }
     GEN ret;
@@ -98,8 +98,6 @@ GEN encodeinput(GEN n, GEN t, long long int input){
         else
             gel(ret, i+1) = stoi(0);
     }
-    if(verbose)
-        cout<<"Input has been encoded\n";
     return ret;
 }
 
@@ -162,7 +160,7 @@ keyset* keygen(params* param){
         f = gadd(f, one);
         finv = ginvmod(f, modulus);
     }
-    while (lg(finv)-1 != itos(n)); // Loop until an invertible f is found.
+    while (lg(lift(gtovecrev(lift(finv))))-1 != itos(n)); // Loop until an invertible f is found.
     
     h = gmul(t, g);
     h = gmul(h, finv);
@@ -177,7 +175,7 @@ keyset* keygen(params* param){
 // Function to encrypt an integer vector in form of an element of the Ring R_q^n
 GEN encrypt(GEN input, params* param, keyset* key){
     if(lg(input)-1 >= itos(param->n)){
-        cout<<"The input vector cannot be greater than n"<<endl;
+        std::cout<<"The input vector cannot be greater than n "<<lg(input)-1<<" "<<itos(param->n)<<endl;
         return stoi(0);
     }
     GEN n = param->n;
@@ -266,7 +264,7 @@ GEN decryptSimple(GEN input, params* param, keyset* key){
         result = gadd(gel(temp, i+1), result);
     }
     
-    cout<<"Simple decryption result "<<GENtostr(result)<<endl;
+    cout<<"Simple decryption result "<<GENtostr(result)<<std::endl;
     
     return temp;
     
@@ -283,13 +281,20 @@ GEN decryptOneMul(GEN input, params* param, keyset* key){
     GEN f = key->sk;
     GEN two = stoi(2);
     
-    GEN temp, temp1, temp2;
+    GEN temp, temp1, temp2, c;
+    
+    temp1 = gtovecrev(lift(input));
+    for(int i=1; i<=itos(n); i++){
+        gel(temp1, i) = diviiround(gmul(gel(temp1, i), t), q);
+    }
+    c = gtopolyrev(temp1, -1);
+    c = gmodulo(c, modulus);
     
     temp2 = f;
     temp2 = gmul(f, temp2);
     temp2 = lift(lift(temp2));
     temp2 = gmodulo(temp2, modulus);
-    temp = lift(gmul(temp2, input));
+    temp = lift(gmul(temp2, c));
     temp = lift(gmodulo(temp, q));
     temp = gtovecrev(temp);
     
@@ -312,7 +317,7 @@ GEN decryptOneMul(GEN input, params* param, keyset* key){
         result = gadd(gel(temp, i+1), result);
     }
     
-    cout<<"Decryption result "<<GENtostr(result)<<endl;
+    cout<<"Decryption result "<<GENtostr(result)<<std::endl;
     
     return temp;
     
