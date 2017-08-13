@@ -2,8 +2,12 @@
 %module example
 
 %{
-#include "example.h"
+#include "pari/pari.h"
+    #include <pari/pari.h>
+    using namespace std;
+    extern int test();
 %}
 
 /* Let's just grab the original header file here */
-%include "example.h"
+
+extern int test();
