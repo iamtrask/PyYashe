@@ -1,5 +1,7 @@
 /* File : example.h */
 
+// TODO : Replace the continuous gaussian dist function with the knuth yao implementation of discrete gauss sampler. Check if main YASHE paper suggests using discrete gaussian dist.
+
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
