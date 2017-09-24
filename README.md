@@ -9,7 +9,7 @@ This implementation only implements the YASHE scheme presently. YASHE' implement
 
 1. Install [Docker](https://www.docker.com/)
 
-   If you're on macOS and use [Homebrew](https://brew.sh), use `brew cask install docker`
+   * If you're on macOS and use [Homebrew](https://brew.sh), run `brew cask install docker; open -a docker`
 
 2. Run these commands:
 
