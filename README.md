@@ -17,3 +17,16 @@ This implementation only implements the YASHE scheme presently. YASHE' implement
 make build
 make run
 ```
+
+## Development
+
+1. Install [Docker](https://www.docker.com/)
+
+    * If you're on macOS and use [Homebrew](https://brew.sh), run `brew cask install docker; open -a docker`
+   
+2. Run `make build`
+
+3. Edit source code as you wish
+
+4. Run `make dev`
+
