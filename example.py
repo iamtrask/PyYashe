@@ -96,7 +96,7 @@ except __builtin__.Exception:
     _newclass = 0
 
 
-def test():
+def test() -> "int":
     return _example.test()
 test = _example.test
 # This file is compatible with both classic and new-style classes.

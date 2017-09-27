@@ -18,6 +18,4 @@ RUN ["mkdir", "/PyYashe"]
 COPY . /PyYashe
 WORKDIR /PyYashe
 
-RUN swig -c++ -python -py3 example.i
-
-RUN python3 setup.py install
+RUN make compile
