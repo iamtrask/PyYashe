@@ -1,4 +1,4 @@
-# Dockerfile to build PyYashe
+# Dockerfile to build PyBV
 
 FROM alpine:edge
 

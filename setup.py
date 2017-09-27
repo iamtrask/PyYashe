@@ -1,22 +1,20 @@
 from distutils.core import setup, Extension
 
 
-example_module = Extension('_example',
-                           sources=['example.cpp','example_wrap.cxx'],
+example_module = Extension('_YASHE',
+                           sources=['YASHE_wrap.cxx'],
                            swig_opts=['-c++'],
                          include_dirs = ['/usr/local/include/'],
                            library_dirs = ['/usr/local/lib/'],
                            libraries = ['pari'],
                         # extra_compile_args = ["-std=c++11", "-lpari", "-mmacosx-version-min=10.7", "-pthread", "-O3", "-march=native", "-Wall", "-funroll-loops", "-Wno-unused-result","-I/usr/local/opt/openblas/include/"],
-                        extra_compile_args = ["-std=c++11",
-                                              # "-mmacosx-version-min=10.7",
-                                              "-pthread", "-O3", "-march=native", "-Wall", "-funroll-loops", "-Wno-unused-result", "-lpari"],
+                        extra_compile_args = ["-std=c++11", "-pthread", "-O3", "-march=native", "-Wall", "-funroll-loops", "-Wno-unused-result", "-lpari"],
                            )
 
-setup (name = 'example',
+setup (name = 'YASHE',
        version = '0.2',
        author      = "SWIG Docs",
        description = """Simple swig linguamind from docs""",
        ext_modules = [example_module],
-       py_modules = ["example"],
+       py_modules = ["YASHE"],
        )
