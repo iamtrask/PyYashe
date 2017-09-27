@@ -99,7 +99,7 @@ make run
 
     _Arguments_: `pt (pari_GEN)`
     
-  * `relinearize(self, ct)`
+  * `relinearize(self, ct)`   
     `relinearize()` method returns a ciphertext of dimension 1, and which can be decrypted by secret_key sk. It is called on the resulting ciphertext after each multiplication.
     
     _Arguments_: `ct (pari_GEN)`
