@@ -1,4 +1,4 @@
-.PHONY: run_example compile_and_run build run dev shell
+.PHONY: run_example compile_and_run build run dev shell test
 
 compile:
 	swig -c++ -python -py3 YASHE.i
