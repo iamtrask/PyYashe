@@ -144,3 +144,6 @@ make run
     _Arguments_: `sk (secret_key*)`
 
 --------
+
+### TODO
+- [ ] Serialization and Deserialization support. <br/>
