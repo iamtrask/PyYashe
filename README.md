@@ -1,4 +1,9 @@
 # PyYASHE [![Build Status](https://travis-ci.org/OpenMined/PyYashe.svg?branch=master)](https://travis-ci.org/OpenMined/PyYashe)
+
+❗
+This library has been deprecated due to changes in strategy and roadmap. To actively contribute based on our current roadmap, checkout [OpenMined](https://github.com/OpenMined/OpenMined), [PySyft](https://github.com/OpenMined/PySyft), or [join our slack](https://openmined.slack.com/messages/team_pysyft)
+---
+
 An Experimental Library for Developing a High Performance YASHE' Implementation
 
 The scheme was first proposed by Bos et al. in - Improved Security for a Ring-Based Fully Homomorphic Encryption Scheme (https://eprint.iacr.org/2013/075.pdf). This paper by Microsoft Research also uses this scheme to implement secure prediction over pre-trained-encrypted neural networks - CryptoNets: Applying Neural Networks to Encrypted Data with High Throughput and Accuracy (https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/CryptonetsTechReport.pdf).
